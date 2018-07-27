@@ -22,6 +22,8 @@ For detailed explanation on how things work, checkout the [CLI Readme](https://g
 
 ## MES NOTES
 
+Une source à conserver: https://medium.com/@cjus/desktop-apps-using-electron-preact-and-material-design-8161938624c6
+
 Normalement il fallait ajouter ça à package.json pour Electron:
 
   "homepage": "./",
@@ -49,3 +51,17 @@ child.on('close', function (code) {
   process.exit(code)
 })
 ```
+
+J'ai aussi vu ça sinon:
+```
+"start": "NODE_ENV=development npm-run-all build:transpilewrap --parallel dev thenelectron",
+"dev": "webpack-dev-server --hot --inline --progress",
+"thenelectron": "sleep 2; electron ./app",
+```
+Mais c'est basé sur un paquet à installer "npm-run-all", et puis le truc foireux "sleep 2".
+
+Puis en gros je pense qu'il va falloir utiliser une variable d'environement.
+
+Sous Windows il faudra emballer tout dans un script bat qui exporte les bonnes variables d'env.
+
+TODO: Je dois toujours tester ce qui se passe si on build l'app, puis on met la variable d'environement de dev: est-ce que j'ai le bidule de dev? Doit être possible à tester depuis une app Electron normale et pas ce bidule preact bizarre.
