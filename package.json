@@ -3,11 +3,13 @@
   "name": "preact-test",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "electron/main.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
+    "electron": "electron .",
     "lint": "eslint src"
   },
   "eslintConfig": {
@@ -23,6 +25,8 @@
     "build/*"
   ],
   "devDependencies": {
+    "electron": "^2.0.5",
+    "electron-builder": "^20.26.0",
     "eslint": "^4.5.0",
     "eslint-config-synacor": "^1.1.0",
     "if-env": "^1.0.0",
